@@ -4,15 +4,9 @@
     <list default="true" id="1f840260-aeed-4a30-89b9-d89f646fd9ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/audio_to_tfrecords.py" beforeDir="false" afterPath="$PROJECT_DIR$/audio/audio_to_tfrecords.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/spectrogram_to_tfrecords.py" beforeDir="false" afterPath="$PROJECT_DIR$/audio/spectrogram_to_tfrecords.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/check_structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/check_structure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/image/image_to_image_tfrecords.py" beforeDir="false" afterPath="$PROJECT_DIR$/image/image_to_image_tfrecords.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/image_to_tfrecords.py" beforeDir="false" afterPath="$PROJECT_DIR$/image/image_to_tfrecords.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text/csv_to_tfrecords.py" beforeDir="false" afterPath="$PROJECT_DIR$/text/csv_to_tfrecords.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text/sqlite_to_tfrecords.py" beforeDir="false" afterPath="$PROJECT_DIR$/text/sqlite_to_tfrecords.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/text/text_to_text_tfrecords.py" beforeDir="false" afterPath="$PROJECT_DIR$/text/text_to_text_tfrecords.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,13 +17,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="405">
-                <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
-              </first_editor>
-              <second_editor />
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="580">
+              <caret line="140" column="7" lean-forward="true" selection-start-line="140" selection-start-column="7" selection-end-line="140" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -53,17 +44,17 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/LICENSE" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/check_structure.py" />
         <option value="$PROJECT_DIR$/image/annotated_images_to_tfrecords.py" />
-        <option value="$PROJECT_DIR$/audio/spectrogram_to_tfrecords.py" />
         <option value="$PROJECT_DIR$/audio/audio_to_tfrecords.py" />
         <option value="$PROJECT_DIR$/image/image_to_tfrecords.py" />
-        <option value="$PROJECT_DIR$/image/image_to_image_tfrecords.py" />
         <option value="$PROJECT_DIR$/text/text_to_text_tfrecords.py" />
-        <option value="$PROJECT_DIR$/text/sqlite_to_tfrecords.py" />
-        <option value="$PROJECT_DIR$/text/csv_to_tfrecords.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/audio/spectrogram_to_tfrecords.py" />
+        <option value="$PROJECT_DIR$/image/image_to_image_tfrecords.py" />
+        <option value="$PROJECT_DIR$/text/csv_to_tfrecords.py" />
+        <option value="$PROJECT_DIR$/text/sqlite_to_tfrecords.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -84,6 +75,21 @@
             <path>
               <item name="tfrecord-converter" type="b2602c69:ProjectViewProjectNode" />
               <item name="tfrecord-converter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tfrecord-converter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tfrecord-converter" type="462c0819:PsiDirectoryNode" />
+              <item name="audio" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tfrecord-converter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tfrecord-converter" type="462c0819:PsiDirectoryNode" />
+              <item name="image" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tfrecord-converter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tfrecord-converter" type="462c0819:PsiDirectoryNode" />
+              <item name="text" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tfrecord-converter" type="b2602c69:ProjectViewProjectNode" />
@@ -127,18 +133,19 @@
       <updated>1614854086306</updated>
       <workItem from="1614854088823" duration="1816000" />
       <workItem from="1614879198838" duration="632000" />
-      <workItem from="1615015089089" duration="2455000" />
+      <workItem from="1615015089089" duration="3889000" />
+      <workItem from="1615021243349" duration="1318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4903000" />
+    <option name="totallyTimeSpent" value="7655000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25670242" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2600536" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -195,13 +202,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="140" column="5" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -215,20 +215,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/text/csv_to_tfrecords.py">
+    <entry file="file://$PROJECT_DIR$/text/text_to_text_tfrecords.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="22" lean-forward="true" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/audio/audio_to_tfrecords.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="147" column="27" lean-forward="true" selection-start-line="147" selection-start-column="27" selection-end-line="147" selection-end-column="27" />
+        <state relative-caret-position="119">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -237,28 +227,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/text/sqlite_to_tfrecords.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+        <state relative-caret-position="357">
+          <caret line="84" column="11" lean-forward="true" selection-start-line="84" selection-start-column="11" selection-end-line="84" selection-end-column="11" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/text/text_to_text_tfrecords.py">
+    <entry file="file://$PROJECT_DIR$/text/csv_to_tfrecords.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="89" column="52" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/audio/spectrogram_to_tfrecords.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+        <state relative-caret-position="234">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -267,18 +247,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/image/annotated_images_to_tfrecords.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
+        <state relative-caret-position="1645">
           <caret line="146" column="84" selection-start-line="146" selection-start-column="84" selection-end-line="146" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image/image_to_image_tfrecords.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="177" column="37" selection-start-line="177" selection-start-column="37" selection-end-line="177" selection-end-column="37" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -287,8 +257,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/image/image_to_tfrecords.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
+        <state relative-caret-position="523">
           <caret line="169" column="56" selection-start-line="169" selection-start-column="56" selection-end-line="169" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image/image_to_image_tfrecords.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2567">
+          <caret line="151" column="57" lean-forward="true" selection-start-line="151" selection-start-column="57" selection-end-line="151" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/audio/spectrogram_to_tfrecords.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1819">
+          <caret line="146" selection-start-line="146" selection-end-line="146" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/audio/audio_to_tfrecords.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1951">
+          <caret line="147" column="27" selection-start-line="147" selection-start-column="27" selection-end-line="147" selection-end-column="27" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -298,10 +298,17 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="405">
-            <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
+          <first_editor relative-caret-position="490">
+            <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="140" column="7" lean-forward="true" selection-start-line="140" selection-start-column="7" selection-end-line="140" selection-end-column="7" />
         </state>
       </provider>
     </entry>

@@ -7,6 +7,9 @@ import re
 
 
 class SQLiteConverter:
+    """
+    Converter class for converting SQLite table contents to TFRecords
+    """
     def __init__(self):
         self.sqlite_dtypes = [
             ['INT', 'INTEGER', 'TINYINT', 'SMALLINT', 'MEDIUMINT', 'BIGINT', 'UNSIGNED', 'INT2', 'INT8'],

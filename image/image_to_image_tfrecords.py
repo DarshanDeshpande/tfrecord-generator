@@ -81,23 +81,11 @@ class Converter:
 
     def write_tfrecord(self, num_tfrecords, directory_path1, directory_path2, out_dir, *args):
         """
-        This function requires a path to a directory with multiple
-        subdirectories having images arranged in classes.
-        The directories should be in the form of
-
-        External dir
-          |-- dir A
-            |-- img 1
-            |-- img 2
-          |-- dir B
-            |-- img 1
-            |-- img 2
-
-        file_names: List or iterable
-        directory_path: Path to External (outermost) directory
-        class_names: (Optional) List or tuple with names of classes.
-                      Length should be equal to number of sub-directories
-        args: Arguments for augmentation
+        num_tfrecords: int, Number of TFRecords to create
+        directory_path1: str, Path to input images
+        directory_path2: str, Path to output images
+        out_dir: str, Path to output directory
+        args: Miscellaneous arguments for `writer`
         """
 
         file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_tfrecords)]
@@ -112,24 +100,13 @@ class Converter:
 
     def write_parallely(self, num_tfrecords, directory_path1, directory_path2, out_dir, *args):
         """
-        This function requires a path to a directory with multiple
-        subdirectories having images arranged in classes.
-        The directories should be in the form of
-
-        External dir
-          |-- dir A
-            |-- img 1
-            |-- img 2
-          |-- dir B
-            |-- img 1
-            |-- img 2
-
-        file_names: List or iterable
-        directory_path: Path to External (outermost) directory
-        class_names: (Optional) List or tuple with names of classes.
-                      Length should be equal to number of sub-directories
-        args: Arguments for augmentation
+        num_tfrecords: int, Number of TFRecords to create
+        directory_path1: str, Path to input images
+        directory_path2: str, Path to output images
+        out_dir: str, Path to output directory
+        args: Miscellaneous arguments for `writer`
         """
+
         file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_tfrecords)]
         images, labels = self._get_paths(directory_path1, directory_path2)
 

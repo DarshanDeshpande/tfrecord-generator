@@ -57,6 +57,12 @@ class CsvConverter:
         return tf.train.Example(features=tf.train.Features(feature=feature)).SerializeToString()
 
     def writer(self, csv_file, num_tfrecords, out_dir, num_rows_to_read=None):
+        """
+        csv_file: str, Path to CSV file
+        num_tfrecords: int, Number of TFRecords to be created
+        out_dir: str, Path to output directory
+        num_rows_to_read: int, Number of rows to read from CSV
+        """
         file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_tfrecords)]
         total_rows = sum(1 for _ in open(csv_file)) if not num_rows_to_read else num_rows_to_read
         num_rows_per_file = total_rows / num_tfrecords
