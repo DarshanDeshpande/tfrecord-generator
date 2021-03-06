@@ -71,6 +71,15 @@ class SQLiteConverter:
 
     def write_to_file(self, db_path, table_name, out_dir, col_list=None,
                       buffer_enable=True, buffer_size=500, n_entries=None):
+        """
+        db_path: str, Path to SQLite Database
+        table_name: str, Name of required table associated with the database
+        out_dir: str, Path to output directory
+        col_list: str, List of columns
+        buffer_enable: bool, Whether to enable buffering or not
+        buffer_size: int, Buffer size if buffer is enabled
+        n_entries: int, Number of rows to be fetched
+        """
         _path = os.path.join(out_dir, f"{table_name}.tfrecord")
         if n_entries and n_entries <= buffer_size:
             buffer_size = n_entries

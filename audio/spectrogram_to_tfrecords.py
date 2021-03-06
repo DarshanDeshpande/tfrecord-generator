@@ -8,10 +8,10 @@ from tqdm import tqdm
 
 
 class Converter:
-    '''
+    """
     Converter class for scanning input directory for classes and automatic conversion to TFRecords.
     The resultant TFRecord stores the spectrogram along with its label which is inferred from directory name
-    '''
+    """
 
     @staticmethod
     def _bytes_feature(value):
@@ -72,8 +72,8 @@ class Converter:
                 for string, label in tqdm(zip(audios[index_start:], labels[index_start:])):
                     writer.write(self._audio_example(string, label, *args))
 
-    def write_tfrecord(self, num_files, directory_path, out_dir, *args):
-        '''
+    def write_tfrecord(self, num_tfrecords, directory_path, out_dir, *args):
+        """
         This function requires a path to a directory with multiple
         subdirectories having audios arranged in classes.
         The directories should be in the form of
@@ -86,13 +86,13 @@ class Converter:
             |-- file 1
             |-- file 2
 
-        num_files: Number of TFRecord files to be created. Defaults to 1
+        num_tfrecords: Number of TFRecord files to be created. Defaults to 1
         directory_path: Path to External (outermost) directory
         out_dir: Output directory
         args: Arguments for STFT
-        '''
+        """
 
-        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_files)]
+        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_tfrecords)]
         audios, labels = self._get_paths(directory_path)
 
         num_audios_per_file = len(audios) // len(file_names)
@@ -102,8 +102,8 @@ class Converter:
 
         print(f"Finished writing {len(audios)} audio files")
 
-    def write_parallely(self, num_files, directory_path, out_dir, *args):
-        '''
+    def write_parallely(self, num_tfrecords, directory_path, out_dir, *args):
+        """
         This function requires a path to a directory with multiple
         subdirectories having audios arranged in classes.
         The directories should be in the form of
@@ -116,12 +116,12 @@ class Converter:
             |-- file 1
             |-- file 2
 
-        num_files: Number of TFRecord files to be created. Defaults to 1
+        num_tfrecords: Number of TFRecord files to be created. Defaults to 1
         directory_path: Path to External (outermost) directory
         out_dir: Output directory
         args: Arguments for STFT
-        '''
-        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_files)]
+        """
+        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_tfrecords)]
         audios, labels = self._get_paths(directory_path)
 
         num_audios_per_file = len(audios) // len(file_names)
@@ -148,7 +148,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--path', type=is_dir, required=True,
                         help="Path to directory containing image directories")
-    parser.add_argument('--nfiles', type=int, help="Number of TFRecord files to be created", default=1)
+    parser.add_argument('--num_tfrecords', type=int, help="Number of TFRecord files to be created", default=1)
     parser.add_argument('--out_dir', type=is_dir, help="Path for directory where TFRecord files will be stored")
     parser.add_argument('--run_parallely', dest='run_parallely', help="Use multi-processing for operations",
                         action='store_true')
@@ -165,10 +165,10 @@ if __name__ == '__main__':
 
     converter = Converter()
     if arguments.run_parallely:
-        converter.write_parallely(arguments.nfiles, path, arguments.out_dir, arguments.num_samples, arguments.fft_size,
+        converter.write_parallely(arguments.num_tfrecords, path, arguments.out_dir, arguments.num_samples, arguments.fft_size,
                                   arguments.stride,
                                   arguments.window_size)
     else:
-        converter.write_tfrecord(arguments.nfiles, path, arguments.out_dir, arguments.num_samples, arguments.fft_size,
+        converter.write_tfrecord(arguments.num_tfrecords, path, arguments.out_dir, arguments.num_samples, arguments.fft_size,
                                  arguments.stride,
                                  arguments.window_size)

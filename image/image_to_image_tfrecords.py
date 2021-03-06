@@ -7,10 +7,10 @@ from tqdm import tqdm
 
 
 class Converter:
-    '''
+    """
     Converter class for scanning two input directories for images and writing them to TFRecord.
     The resultant TFRecord stores the height, width, channels and the raw image in binary format for each pair
-    '''
+    """
 
     @staticmethod
     def _bytes_feature(value):
@@ -61,9 +61,9 @@ class Converter:
         return tf.constant(image_list), tf.constant(label_list)
 
     def _writer(self, index, file_name, num_images_per_file, images, labels, *args):
-        '''
+        """
         Helper function for iterating and writing
-        '''
+        """
         with tf.io.TFRecordWriter(file_name) as writer:
             index_start, index_stop = index * num_images_per_file, (index + 1) * num_images_per_file
 
@@ -79,8 +79,8 @@ class Converter:
                     writer.write(
                         self._image_example(image1_string, image2_string, *args))
 
-    def write_tfrecord(self, num_files, directory_path1, directory_path2, out_dir, *args):
-        '''
+    def write_tfrecord(self, num_tfrecords, directory_path1, directory_path2, out_dir, *args):
+        """
         This function requires a path to a directory with multiple
         subdirectories having images arranged in classes.
         The directories should be in the form of
@@ -98,9 +98,9 @@ class Converter:
         class_names: (Optional) List or tuple with names of classes.
                       Length should be equal to number of sub-directories
         args: Arguments for augmentation
-        '''
+        """
 
-        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_files)]
+        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_tfrecords)]
         images, labels = self._get_paths(directory_path1, directory_path2)
 
         num_images_per_file = len(images) // len(file_names)
@@ -110,8 +110,8 @@ class Converter:
 
         print(f"Finished writing {len(images)} images")
 
-    def write_parallely(self, num_files, directory_path1, directory_path2, out_dir, *args):
-        '''
+    def write_parallely(self, num_tfrecords, directory_path1, directory_path2, out_dir, *args):
+        """
         This function requires a path to a directory with multiple
         subdirectories having images arranged in classes.
         The directories should be in the form of
@@ -129,8 +129,8 @@ class Converter:
         class_names: (Optional) List or tuple with names of classes.
                       Length should be equal to number of sub-directories
         args: Arguments for augmentation
-        '''
-        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_files)]
+        """
+        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_tfrecords)]
         images, labels = self._get_paths(directory_path1, directory_path2)
 
         num_images_per_file = len(images) // len(file_names)
@@ -159,7 +159,7 @@ if __name__ == '__main__':
                         help="Path to directory containing input images")
     parser.add_argument('-out_image_dir', '--out_images', type=is_dir, required=True,
                         help="Path to directory containing output images")
-    parser.add_argument('--n_records', type=int, help="Number of TFRecord files to be created", default=1)
+    parser.add_argument('--num_tfrecords', type=int, help="Number of TFRecord files to be created", default=1)
     parser.add_argument('--out_dir', type=is_dir, help="Path for directory where TFRecord files will be stored")
     parser.add_argument('--run_parallely', dest='run_parallely', help="Use multi-processing for operations",
                         action='store_true')
@@ -189,10 +189,10 @@ if __name__ == '__main__':
     converter = Converter()
 
     if arguments.run_parallely:
-        converter.write_parallely(arguments.n_records, arguments.in_images, arguments.out_images, arguments.out_dir,
+        converter.write_parallely(arguments.num_tfrecords, arguments.in_images, arguments.out_images, arguments.out_dir,
                                   resize_in, arguments.maintain_aspect_ratio_in, arguments.grayscale_in,
                                   resize_out, arguments.maintain_aspect_ratio_out, arguments.grayscale_out)
     else:
-        converter.write_tfrecord(arguments.n_records, arguments.in_images, arguments.out_images, arguments.out_dir,
+        converter.write_tfrecord(arguments.num_tfrecords, arguments.in_images, arguments.out_images, arguments.out_dir,
                                  resize_in, arguments.maintain_aspect_ratio_in, arguments.grayscale_in, resize_out,
                                  arguments.maintain_aspect_ratio_out, arguments.grayscale_out)

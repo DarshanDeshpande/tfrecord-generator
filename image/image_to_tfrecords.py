@@ -69,7 +69,7 @@ class Converter:
                 for image_string, label in tqdm(zip(images[index_start:], labels[index_start:])):
                     writer.write(self._image_example(image_string, label, *args))
 
-    def write_tfrecord(self, num_files, directory_path, out_dir, *args):
+    def write_tfrecord(self, num_tfrecords, directory_path, out_dir, *args):
         '''
         This function requires a path to a directory with multiple
         subdirectories having images arranged in classes.
@@ -90,7 +90,7 @@ class Converter:
         args: Arguments for augmentation
         '''
 
-        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_files)]
+        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_tfrecords)]
         images, labels = self._get_paths(directory_path)
 
         num_images_per_file = len(images) // len(file_names)
@@ -100,7 +100,7 @@ class Converter:
 
         print(f"Finished writing {len(images)} images")
 
-    def write_parallely(self, num_files, directory_path, out_dir, *args):
+    def write_parallely(self, num_tfrecords, directory_path, out_dir, *args):
         '''
         This function requires a path to a directory with multiple
         subdirectories having images arranged in classes.
@@ -121,7 +121,7 @@ class Converter:
         args: Arguments for augmentation
         '''
 
-        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_files)]
+        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_tfrecords)]
         images, labels = self._get_paths(directory_path)
 
         num_images_per_file = len(images) // len(file_names)
@@ -148,7 +148,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--path', type=is_dir, required=True,
                         help="Path to directory containing image directories")
-    parser.add_argument('--nfiles', type=int, help="Number of TFRecord files to be created", default=1)
+    parser.add_argument('--num_tfrecords', type=int, help="Number of TFRecord files to be created", default=1)
     parser.add_argument('--out_dir', type=is_dir, help="Path for directory where TFRecord files will be stored")
     parser.add_argument('--run_parallely', dest='run_parallely', help="Use multi-processing for operations",
                         action='store_true')
@@ -164,8 +164,8 @@ if __name__ == '__main__':
     converter = Converter()
 
     if arguments.run_parallely:
-        converter.write_parallely(arguments.nfiles, arguments.path, arguments.out_dir, resize,
+        converter.write_parallely(arguments.num_tfrecords, arguments.path, arguments.out_dir, resize,
                                   arguments.maintain_aspect_ratio, arguments.grayscale)
     else:
-        converter.write_tfrecord(arguments.nfiles, arguments.path, arguments.out_dir, resize,
+        converter.write_tfrecord(arguments.num_tfrecords, arguments.path, arguments.out_dir, resize,
                                  arguments.maintain_aspect_ratio, arguments.grayscale)

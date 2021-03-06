@@ -16,6 +16,7 @@ The repository currently supports the following scripts:
     <ul>
         <li><a href="https://github.com/DarshanDeshpande/tfrecord-generator/blob/master/image/image_to_tfrecords.py">Images to TFRecords</a></li>
         <li><a href="https://github.com/DarshanDeshpande/tfrecord-generator/blob/master/image/image_to_image_tfrecords.py">Image to Image TFRecords </a>(Useful for generative models)</li>
+        <li><a href="https://github.com/DarshanDeshpande/tfrecord-generator/blob/master/image/annotated_images_to_tfrecords.py">Annotated Image TFRecords </a></li>
     </ul>
 </li>
 <li>Text
@@ -56,7 +57,7 @@ python script_name.py --help
 For example, if you want to convert your images to TFRecords then through your cmd run the following example
 ```python
 python image_to_tfrecords.py -p "path/to/directory/containing/subdirectories" \
---nfiles 3 \
+--num_tfrecords 3 \
 --out_dir "path/to/output/directory" \
 --run_parallely \
 --resize 500,500 \

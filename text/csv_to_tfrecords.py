@@ -1,31 +1,34 @@
 import argparse
-import os
 import csv
-from tqdm import tqdm
+import os
 from ast import literal_eval
-import tensorflow as tf
 
+import tensorflow as tf
+from tqdm import tqdm
 
 
 class CsvConverter:
-    '''
+    """
     Converter class for reading a CSV and automatically converting it's contents to TFRecords.
     The resultant TFRecord stores the associated label and the raw text in binary format
-    '''
+    """
 
     @staticmethod
     def _int64_feature(value):
         return tf.train.Feature(int64_list=tf.train.Int64List(value=[int(value)]))
 
-    def _bytes_feature(self, value):
+    @staticmethod
+    def _bytes_feature(value):
         if isinstance(value, type(tf.constant(0))):
             value = value.numpy()
         return tf.train.Feature(bytes_list=tf.train.BytesList(value=[bytes(value, 'utf-8')]))
 
-    def _float_feature(self, value):
+    @staticmethod
+    def _float_feature(value):
         return tf.train.Feature(float_list=tf.train.FloatList(value=[float(value)]))
 
-    def _get_type(self, input_data):
+    @staticmethod
+    def _get_type(input_data):
         try:
             return type(literal_eval(input_data))
         except (ValueError, SyntaxError):
@@ -53,10 +56,10 @@ class CsvConverter:
 
         return tf.train.Example(features=tf.train.Features(feature=feature)).SerializeToString()
 
-    def writer(self, csv_file, num_files, out_dir, num_rows_to_read=None):
-        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_files)]
+    def writer(self, csv_file, num_tfrecords, out_dir, num_rows_to_read=None):
+        file_names = [f"{out_dir}/{i}.tfrecord" if out_dir else f"{i}.tfrecord" for i in range(num_tfrecords)]
         total_rows = sum(1 for _ in open(csv_file)) if not num_rows_to_read else num_rows_to_read
-        num_rows_per_file = total_rows / num_files
+        num_rows_per_file = total_rows / num_tfrecords
         writers = [tf.io.TFRecordWriter(f) for f in file_names]
 
         iterator, file_name, col_names, dtypes = self._reader(csv_file, out_dir)
@@ -87,10 +90,10 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--path', type=is_file, required=True,
                         help="Path to CSV file")
     parser.add_argument('--out_dir', type=is_dir, help="Path for directory where TFRecord files will be stored")
-    parser.add_argument('--nfiles', type=int, help="Number of TFRecord files to be created", default=1)
+    parser.add_argument('--num_tfrecords', type=int, help="Number of TFRecord files to be created", default=1)
     parser.add_argument('--num_rows_to_read', help="Number of lines to write from each file. "
                                                    "If not specified, all lines will be written", type=int,
                         default=None)
     args = parser.parse_args()
 
-    CsvConverter().writer(args.path, args.nfiles, args.out_dir, args.num_rows_to_read)
+    CsvConverter().writer(args.path, args.num_tfrecords, args.out_dir, args.num_rows_to_read)
